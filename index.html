@@ -326,7 +326,7 @@ const products = [
   function openProductModal(p){selected=p;productModal.style.display='flex';modalImg.src=p.img;modalTitle.innerText=p.name;modalPrice.innerText='₹'+p.price}
   function closeProductModal(){productModal.style.display='none'}
   function addToCart(){cart.push(selected);cartCount.innerText=cart.length;closeProductModal()}
-  function renderCart(){cartItems.innerHTML='';let total=0;cart.forEach(i=>{total+=i.price;cartItems.innerHTML+=`<div class='cart-item'><span>${i.name}</span><span>₹${i.price}</span></div>`});if(cart.length>0){cartItems.innerHTML+=`<hr><strong>Total: $${total}</strong>`}}
+  function renderCart(){cartItems.innerHTML='';let total=0;cart.forEach(i=>{total+=i.price;cartItems.innerHTML+=`<div class='cart-item'><span>${i.name}</span><span>₹${i.price}</span></div>`});if(cart.length>0){cartItems.innerHTML+=`<hr><strong>Total: ₹${total}</strong>`}}
   function openCheckout(){if(cart.length===0){alert('Cart is empty');return}checkoutModal.style.display='flex'}
   function confirmOrder(){if(!custName.value||!custEmail.value){alert('Please fill details');return}checkoutModal.style.display='none';successModal.style.display='flex';cart=[];cartCount.innerText=0;renderCart()}
   function sendArt(e){
