@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Contact | Artify</title>
+  <link rel="stylesheet" href="contact.css">
+</head>
+<body>
+
+<header>
+  <h2>Artify</h2>
+  <nav>
+    <a href="index.html">Home</a>
+    <a href="index.html#shop">Products</a>
+    <a href="index.html#about">About Store</a>
+    <a href="index.html#about">Gallery</a>
+    <a href="contact.html">Contact</a>
+    <a href="index.html#cart">Cart</a>
+  </nav>
+</header>
+
+
+<section class="contact">
+  <h1>Contact Artify</h1>
+  <p class="intro">
+    We’d love to hear from you! Whether you have questions, feedback, or business
+    inquiries, feel free to contact us anytime.
+  </p>
+
+  <div class="contact-grid">
+
+    <!-- Contact Details -->
+    <div class="card">
+      <h2>Contact Details</h2>
+      <p><strong>Email:</strong> artify.store@proton.me</p>
+      <p><strong>Address:</strong><br>
+        Artify Studio<br>
+       India
+      </p>
+      <p><strong>Working Hours:</strong><br>
+        Monday – Saturday<br>
+        10:00 AM – 6:00 PM
+      </p>
+    </div>
+
+    <!-- Contact Form -->
+    <div class="card">
+      <h2>Send a Message</h2>
+      <form id="contactForm">
+        <input type="text" id="name" placeholder="Your Name" />
+        <input type="email" id="email" placeholder="Your Email" />
+        <textarea id="message" placeholder="Your Message"></textarea>
+        <button type="submit">Send Message</button>
+      </form>
+    </div>
+
+  </div>
+
+  <!-- Policies -->
+  <div class="card policies">
+    <h2>Our Policies</h2>
+    <p><strong>Privacy Policy:</strong> We respect your privacy. Your personal information is never shared.</p>
+    <p><strong>Return Policy:</strong> Returns are accepted within 7 days for damaged or incorrect items.</p>
+    <p><strong>Shipping Policy:</strong> Orders are processed within 2–3 business days.</p>
+    <p><strong>Response Time:</strong> We reply to emails within 24–48 hours.</p>
+  </div>
+
+</section>
+
+<script src="contact.js"></script>
+<footer class="footer">
+  <div class="footer-container">
+
+    <!-- Store Description -->
+    <div class="footer-col">
+      <h3>Artify</h3>
+      <p>
+        Artify is your one-stop destination for quality art and craft supplies.
+        Designed for artists, students, and creative minds who love to imagine,
+        create, and craft.
+      </p>
+    </div>
+
+    <!-- Quick Links -->
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a onclick="showPage('home')">Home</a></li>
+        <li><a onclick="showPage('shop')">Products</a></li>
+        <li><a onclick="showPage('about')">About Store</a></li>
+        <li><a onclick="showPage('gallery')">Gallery</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a onclick="showPage('cart')">Cart</a></li>
+      </ul>
+    </div>
+
+    <!-- Contact Info -->
+    <div class="footer-col">
+      <h4>Contact Info</h4>
+      <p>Email: <a href="mailto: artify.store@proton.me"> artify.store@proton.me</a></p>
+      <p>Location: India</p>
+      <p>Support: Mon – Sat (10 AM – 6 PM)</p>
+    </div>
+
+  </div>
+
+  <!-- Copyright -->
+  <div class="footer-bottom">
+    © 2026 Artify Store. All rights reserved.
+  </div>
+</footer>
+</body>
+</html>
