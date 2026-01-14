@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Artify – Online Art & Craft Store</title>
+  <title>Artify</title>
   <style>
     :root{
       --primary:#6366f1;
@@ -114,7 +114,173 @@
     }
       .about-images{height:260px}
       .about-images img{position:relative;margin:10px}
-    
+      
+    .cart-item{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin:12px 0;
+}
+
+.cart-left{
+  display:flex;
+  align-items:center;
+  gap:12px;
+}
+
+.cart-img{
+  width:45px;
+  height:45px;
+  object-fit:cover;
+  border-radius:8px;
+  box-shadow:0 5px 15px rgba(0,0,0,.15);
+}
+.footer{
+  background: var(--dark);
+  color: #e5e7eb;
+  padding: 60px 40px 20px;
+  margin-top: 80px;
+}
+
+.footer-container{
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 40px;
+  max-width: 1200px;
+  margin: auto;
+}
+
+.footer h3{
+  font-size: 1.6rem;
+  margin-bottom: 15px;
+  color: #fff;
+}
+
+.footer h4{
+  font-size: 1.2rem;
+  margin-bottom: 15px;
+  color: #fff;
+}
+
+.footer p{
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.footer ul{
+  list-style: none;
+}
+
+.footer ul li{
+  margin-bottom: 10px;
+}
+
+.footer ul li a{
+  color: #c7d2fe;
+  text-decoration: none;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.footer ul li a:hover{
+  color: var(--secondary);
+}
+
+.footer a{
+  color: #c7d2fe;
+  text-decoration: none;
+}
+
+.footer a:hover{
+  color: var(--secondary);
+}
+
+.footer-bottom{
+  border-top: 1px solid rgba(255,255,255,.1);
+  margin-top: 40px;
+  padding-top: 15px;
+  text-align: center;
+  font-size: 0.9rem;
+  color: #9ca3af;
+}
+
+/* FULL SCREEN SLIDER */
+.full-slider{
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  overflow: hidden;
+}
+
+.full-slide{
+  position: absolute;
+  inset: 0;
+  opacity: 0;
+  transition: opacity 1.2s ease-in-out;
+}
+
+.full-slide.active{
+  opacity: 1;
+  z-index: 1;
+}
+
+.full-slide img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* Dark overlay */
+.full-slide::after{
+  content:'';
+  position:absolute;
+  inset:0;
+  background:rgba(15,23,42,.55);
+}
+
+/* Text content */
+.full-slide-text{
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  color: white;
+  padding: 20px;
+}
+
+.full-slide-text h1{
+  font-size: 3.5rem;
+  margin-bottom: 15px;
+  animation: slideUp 1s ease;
+}
+
+.full-slide-text p{
+  font-size: 1.3rem;
+  opacity: .95;
+}
+
+/* Animation */
+@keyframes slideUp{
+  from{transform:translateY(40px);opacity:0}
+  to{transform:translateY(0);opacity:1}
+}
+
+/* Mobile */
+@media(max-width:768px){
+  .full-slide-text h1{
+    font-size: 2.2rem;
+  }
+  .full-slider{
+    height: 90vh;
+  }
+}
+
+
+
   </style>
 </head>
 <body>
@@ -123,9 +289,12 @@
   <div class="menu-btn" onclick="toggleMenu()">☰</div>
   <nav id="navMenu">
     <a onclick="showPage('home')">Home</a>
-    <a onclick="showPage('shop')">Shop</a>
-    <a onclick="showPage('about')">About</a>
+    <a onclick="showPage('shop')">Products</a>
+    <a onclick="showPage('about')">About Store</a>
     <a onclick="showPage('gallery')">Gallery</a>
+    <a href="contact.html">Contact</a>
+
+    <!-- <a onclick="showPage('gallery')">Gallery</a> -->
     <a onclick="showPage('cart')">Cart (<span id="cartCount">0</span>)</a>
   </nav>
 </header>
@@ -139,8 +308,8 @@
       <img src="Gallery/art2.jpg" class="float img1" />
       <img src="Gallery/art4.jpeg" class="float img2" />
       <img src="Gallery/art1.jpg" class="float img3" />
-      <img src="Gallery/art5.jpg" class="float img4" /> 
-      <img src="Gallery/art3.jpg" class="float img5" />
+      <img src="Gallery/art5.jpg" class="float img4" />
+      <!-- <img src="Gallery/art3.jpg" class="float img5" /> -->
     </div>
   </div>
 </section>
@@ -160,17 +329,19 @@
       <img src="Gallery/art2.jpg" class="about-float a2" />
     </div>
     <div class="about-text">
-  <p>
-    <strong>Artify Store</strong> is an online shopping website for art and craft items. It is made for artists, students, and people who enjoy creative work. The website brings many art and craft products together in one place so users can easily find and buy what they need.
-    <br><br>
-    The main aim of Artify Store is to support creativity by providing good quality products at affordable prices. The website is simple to use, allowing customers to browse items, add them to the cart, and complete the checkout process easily.
-    <br><br>
-    Artify Store focuses on quality and customer satisfaction. All products are selected carefully to ensure they are useful, durable, and worth the price. The store is helpful for beginners, hobbyists, as well as professional artists.
-    <br><br>
-    By using technology, Artify Store makes buying art and craft materials easy and convenient. The website also works as a learning project that shows how an online shopping system can be created and used effectively.
-  </p>
-</div>
-
+      <p>
+        Hi, I am <strong>Haripriya</strong>, an artist and a creative soul who loves to create new art and craft. 
+        Over the years, while working on different art and craft projects, I realized that finding the <strong>right art materials at the right time</strong> is often very difficult.
+        <br><br>
+        I felt that I was not alone in facing this problem — many artists, students, and craft lovers struggle with the same issue. That’s when the idea of <strong>Artify</strong> was born.
+        Artify is a small e-commerce platform created with the vision of bringing <strong>all art and craft essentials into one place</strong>.
+        <br><br>
+        My background is in <strong>BCA (Information Technology)</strong>, and along with my technical skills, I have always had a deep love for art and craft.
+        <br><br>
+        Thank you for visiting Artify and being a part of this creative journey. 💖
+      </p>
+    </div>
+  </div>
 </section>
 
 <section id="gallery">
@@ -187,13 +358,10 @@
     <div class="card"><img src="Gallery/art3.jpg"><h3>By : Haripriya Krishanu </h3></div>
     <div class="card"><img src="Gallery/art4.jpeg"><h3>By : Haripriya Krishanu </h3></div>
     <div class="card"><img src="Gallery/art5.jpg"><h3>By : Haripriya Krishanu </h3></div>
-     <div class="card"><img src="Gallery/gallery1.jpeg"><h3>By : Haripriya Krishanu </h3></div>
-    <div class="card"><img src="Gallery/gallery2.jpeg"><h3>By : Haripriya Krishanu </h3></div>
-    <div class="card"><img src="Gallery/gallery3.jpeg"><h3>By : Haripriya Krishanu </h3></div>
-    <div class="card"><img src="Gallery/gallery4.jpeg"><h3>By : Haripriya Krishanu </h3></div>
-    <div class="card"><img src="Gallery/gallery5.jpeg"><h3>By : Haripriya Krishanu </h3></div>
-    <div class="card"><img src="Gallery/gallery6.jpeg"><h3>By : Haripriya Krishanu </h3></div>
-  
+    <div class="card"><img src="Gallery/art2.jpg"><h3>By : Haripriya Krishanu </h3></div>
+    <div class="card"><img src="Gallery/art3.jpg"><h3>By : Haripriya Krishanu </h3></div>
+    <div class="card"><img src="Gallery/art4.jpeg"><h3>By : Haripriya Krishanu </h3></div>
+    <div class="card"><img src="Gallery/art5.jpg"><h3>By : Haripriya Krishanu </h3></div>
     
   </div>
 
@@ -211,7 +379,7 @@
   <div class="cart-wrap">
     <div class="cart-visual">
       <!-- <img src="img/cart1.jpg" class="cart-float c1" /> -->
-      <img src="img/cart2 (2).png" class="cart-float c2" />
+      <img src="img/cart2.webp" class="cart-float c2" />
       
     </div>
     <div class="cart-content">
@@ -327,8 +495,30 @@ const products = [
   function openProductModal(p){selected=p;productModal.style.display='flex';modalImg.src=p.img;modalTitle.innerText=p.name;modalPrice.innerText='₹'+p.price}
   function closeProductModal(){productModal.style.display='none'}
   function addToCart(){cart.push(selected);cartCount.innerText=cart.length;closeProductModal()}
-  function renderCart(){cartItems.innerHTML='';let total=0;cart.forEach(i=>{total+=i.price;cartItems.innerHTML+=`<div class='cart-item'><span>${i.name}</span><span>₹${i.price}</span></div>`});if(cart.length>0){cartItems.innerHTML+=`<hr><strong>Total: ₹${total}</strong>`}}
-  function openCheckout(){if(cart.length===0){alert('Cart is empty');return}checkoutModal.style.display='flex'}
+  function renderCart(){
+  cartItems.innerHTML = '';
+  let total = 0;
+
+  cart.forEach(i => {
+    total += i.price;
+    cartItems.innerHTML += `
+      <div class="cart-item">
+        <div class="cart-left">
+          <img src="${i.img}" class="cart-img">
+          <span>${i.name}</span>
+        </div>
+        <span>₹${i.price}</span>
+      </div>
+    `;
+  });
+
+  if(cart.length > 0){
+    cartItems.innerHTML += `
+      <hr>
+      <strong>Total: ₹${total}</strong>
+    `;
+  }
+}function openCheckout(){if(cart.length===0){alert('Cart is empty');return}checkoutModal.style.display='flex'}
   function confirmOrder(){if(!custName.value||!custEmail.value){alert('Please fill details');return}checkoutModal.style.display='none';successModal.style.display='flex';cart=[];cartCount.innerText=0;renderCart()}
   function sendArt(e){
     e.preventDefault();
@@ -340,8 +530,80 @@ const products = [
     artistName.value='';artistEmail.value='';artistArt.value='';
   }
 
-  function closeSuccess(){successModal.style.display='none';showPage('home')}
+ 
 </script>
+<section class="full-slider">
+
+  <div class="full-slide active">
+    <img src="Gallery/art1.jpg">
+    <div class="full-slide-text">
+      <h1>Unleash Your Creativity</h1>
+      <p>Premium art & craft supplies at Artify</p>
+    </div>
+  </div>
+
+  <div class="full-slide">
+    <img src="Gallery/art2.jpg">
+    <div class="full-slide-text">
+      <h1>Create Without Limits</h1>
+      <p>Everything artists need in one place</p>
+    </div>
+  </div>
+
+  <div class="full-slide">
+    <img src="Gallery/art4.jpeg">
+    <div class="full-slide-text">
+      <h1>Craft Your Imagination</h1>
+      <p>Inspiration starts here at Artify</p>
+    </div>
+  </div>
+
+</section>
+
+
+<footer class="footer">
+  <div class="footer-container">
+
+    <!-- Store Description -->
+    <div class="footer-col">
+      <h3>Artify</h3>
+      <p>
+        Artify is your one-stop destination for quality art and craft supplies.
+        Designed for artists, students, and creative minds who love to imagine,
+        create, and craft.
+      </p>
+    </div>
+
+    <!-- Quick Links -->
+    <div class="footer-col">
+      <h4>Quick Links</h4>
+      <ul>
+        <li><a onclick="showPage('home')">Home</a></li>
+        <li><a onclick="showPage('shop')">Products</a></li>
+        <li><a onclick="showPage('about')">About Store</a></li>
+        <li><a onclick="showPage('gallery')">Gallery</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a onclick="showPage('cart')">Cart</a></li>
+      </ul>
+    </div>
+
+    <!-- Contact Info -->
+    <div class="footer-col">
+      <h4>Contact Info</h4>
+      <p>Email: <a href="mailto: artify.store@proton.me"> artify.store@proton.me</a></p>
+      <p>Location: India</p>
+      <p>Support: Mon – Sat (10 AM – 6 PM)</p>
+    </div>
+
+  </div>
+
+  <!-- Copyright -->
+  <div class="footer-bottom">
+    © 2026 Artify Store. All rights reserved.
+  </div>
+</footer>
+
 </body>
+
 </html>
 <!-- crazygirl & deadmangaming -->
