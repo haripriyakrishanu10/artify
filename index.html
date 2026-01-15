@@ -52,6 +52,7 @@
     .img2{top:40%;right:5%;animation-delay:1s}
     .img3{bottom:1%;left:20%;animation-delay:2s}
     .img5{bottom:55%;left:35%;animation-delay:2s}
+    .img6{bottom:0%;left:53%;animation-delay:2s}
     @keyframes float{0%,100%{transform:translateY(0)}50%{transform:translateY(-30px)}}
 
     .btn{padding:18px 40px;font-size:1.1rem;border:none;border-radius:50px;background:var(--primary);color:white;cursor:pointer;transition:.3s;z-index:2}
@@ -320,14 +321,33 @@
     inset: 0;
   }
 }
+.logo{
+  display: flex;
+  flex-direction: column;
+  line-height: 1.1;
+}
+
+.logo h2{
+  font-size: 1.8rem;
+}
+
+.tagline{
+  font-size: 0.85rem;
+  color: #64748b;
+  font-weight: 600;
+  letter-spacing: 1px;
+}
 
 
   </style>
 </head>
 <body>
 <header>
+  <div class="logo">
   <h2>Artify</h2>
-  <h5>Art & Craft Store </h5>
+  <span class="tagline">Art & Craft Store</span>
+</div>
+
   <div class="menu-btn" onclick="toggleMenu()">☰</div>
   <nav id="navMenu">
     <a onclick="showPage('home')">Home</a>
@@ -352,7 +372,7 @@
       <img src="Gallery/home4.png" class="float img3" />
       <img src="Gallery/home5.png" class="float img4" />
       <img src="Gallery/home1.png" class="float img4" />
-     <img src="Gallery/home6.jpg" class="float img5" />
+      <img src="Gallery/home6.png" class="float img6" />
     </div>
   </div>
 </section>
